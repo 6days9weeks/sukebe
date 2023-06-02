@@ -13,6 +13,10 @@ jobs:
       - name: Ensure main requirements are installed
         id: core
         run: pip3 install httpx loguru nuitka
+      
+      - name: Get version
+        id: version
+        run: echo "::set-output name=sukebe_version::$(cat pyproject.toml | grep version | sed -e s/[^0-9.]//g)"
 
       - name: Compile to binary
         id: owo
@@ -26,6 +30,7 @@ jobs:
         uses: marvinpinto/action-automatic-releases@latest
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: sukebe ${{ steps.version.outputs.sukebe_version }}
           prerelease: false
-          title: Sukebe
+          title: sukebe ${{ steps.version.outputs.sukebe_version }}
           files: src/sukebe.bin
