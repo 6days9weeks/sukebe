@@ -176,5 +176,5 @@ def loop(  # pylint: disable=missing-function-docstring
             loop_nekoslife(webhooks, http)
             loop_danbooru(webhooks, http)
             loop_konachan(webhooks, http)
-            logger.info("Finished iterating, sleeping for 30 minutes...")
+            logger.info(f"Finished iterating, sleeping for {http.config.wait / 60} minutes...")
             time.sleep(http.config.wait)

@@ -20,9 +20,9 @@ class Config:
     @classmethod
     def from_disk(cls) -> "Config":
         """Create a Config object from a json file"""
-        with open(
+        with open( # pylint: disable=unspecified-encoding,
             Path.cwd() / "config.json", "r"
-        ) as f:  # pylint: disable=unspecified-encoding,invalid-name
+        ) as f:  # pylint: disable=invalid-name
             data = json.load(f)
         return cls(**data)
 
