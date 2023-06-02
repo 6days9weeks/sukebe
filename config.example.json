@@ -1,4 +1,4 @@
 {
-    "lunar-token": "https://api.lunardev.group/docs/",
+    "lunar_token": "https://api.lunardev.group/docs/",
     "wait": "in seconds"
 }
