@@ -30,7 +30,7 @@ jobs:
         uses: marvinpinto/action-automatic-releases@latest
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: sukebe ${{ steps.version.outputs.sukebe_version }}
+          automatic_release_tag: sukebe_v${{ steps.version.outputs.sukebe_version }}
           prerelease: false
           title: sukebe ${{ steps.version.outputs.sukebe_version }}
           files: src/sukebe.bin
