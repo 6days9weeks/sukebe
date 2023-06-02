@@ -1,6 +1,7 @@
+# pylint: disable=missing-module-docstring
 from loguru import logger  # pylint: disable=import-error
 
-from sukebe.utils import HTTPClient, load_webhooks, loop
+from sukebe import HTTPClient, load_webhooks, loop
 
 if __name__ == "__main__":
     logger.info("Starting sukebe...")
