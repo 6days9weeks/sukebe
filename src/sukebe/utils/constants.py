@@ -1,3 +1,4 @@
+# pylint: disable=missing-module-docstring
 from typing import List
 
 avatars: List[str] = [
@@ -82,3 +83,33 @@ konachan_tags: List[str] = ["yuri", "bondage", "bondage+rope", "thighhighs", "ca
 nekoslife_tags: List[str] = ["lewd", "neko"]
 
 yandere_tags: List[str] = ["yuri", "bondage", "thighhighs", "neko", "maid"]
+
+lunar_tags: List[str] = [
+    "ahegao",
+    "ass",
+    "boobs",
+    "cum",
+    "hololive",
+    "neko",
+    "panties",
+    "thighs",
+    "yuri",
+]
+
+waifu_im_tags: List[str] = [
+    "maid",
+    "waifu",
+    "marin-kitagawa",
+    "mori-calliope",
+    "raiden-shogun",
+    "oppai",
+    "selfies",
+    "uniform",
+    "ass",
+    "hentai",
+    "milf",
+    "oral",
+    "paizuri",
+    "ecchi",
+    "ero",
+]
