@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "sukebe"
-version = "0.1.0"
+version = "0.2.0"
 description = "pervert"
 authors = ["dia ♡ <sora@harmony.rocks>"]
 readme = "README.md"
