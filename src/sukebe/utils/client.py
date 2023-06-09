@@ -4,7 +4,7 @@ import math
 import random
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Dict
+from typing import Dict, Union
 
 import httpx  # pylint: disable=import-error
 from loguru import logger  # pylint: disable=import-error
@@ -43,7 +43,7 @@ class HTTPClient:
             "waifu.im": "https://api.waifu.im/search?included_tags={}&is_nsfw=true&gif=false",
         }
 
-    def get_reddit(self, subreddit: str) -> str:  # pylint: disable=missing-function-docstring
+    def get_reddit(self, subreddit: str) -> Union[None, str]:  # pylint: disable=missing-function-docstring
         url = self.base_urls["reddit"].format(subreddit)
         logger.debug(f"GET {url}")
         r = self.session.get(url)  # pylint: disable=invalid-name
@@ -58,7 +58,7 @@ class HTTPClient:
         ]
         return filtered_posts[math.floor(random.random() * len(filtered_posts))]["data"]["url"]
 
-    def get_nekos(self, tag: str) -> str:  # pylint: disable=missing-function-docstring
+    def get_nekos(self, tag: str) -> Union[None, str]:  # pylint: disable=missing-function-docstring
         url = self.base_urls["nekos.life"].format(tag)
         logger.debug(f"GET {url}")
         r = self.session.get(url)  # pylint: disable=invalid-name
@@ -67,7 +67,7 @@ class HTTPClient:
             return
         return r.json()["url"]
 
-    def get_danbooru(self, tag: str) -> str:  # pylint: disable=missing-function-docstring
+    def get_danbooru(self, tag: str) -> Union[None, str]:  # pylint: disable=missing-function-docstring
         url = self.base_urls["danbooru"].format(tag)
         logger.debug(f"GET {url}")
         r = self.session.get(url)  # pylint: disable=invalid-name
@@ -80,7 +80,7 @@ class HTTPClient:
         ]
         return filtered_posts[math.floor(random.random() * len(filtered_posts))]["file_url"]
 
-    def get_konachan(self, tag: str) -> str:  # pylint: disable=missing-function-docstring
+    def get_konachan(self, tag: str) -> Union[None, str]:  # pylint: disable=missing-function-docstring
         url = self.base_urls["konachan"].format(tag)
         logger.debug(f"GET {url}")
         r = self.session.get(url)  # pylint: disable=invalid-name
@@ -91,7 +91,7 @@ class HTTPClient:
         filtered_posts = [x for x in all_posts if x["rating"] != "s" and "trap" not in x["tags"]]
         return filtered_posts[math.floor(random.random() * len(filtered_posts))]["file_url"]
 
-    def get_yandere(self, tag: str) -> str:  # pylint: disable=missing-function-docstring
+    def get_yandere(self, tag: str) -> Union[None, str]:  # pylint: disable=missing-function-docstring
         url = self.base_urls["yandere"].format(tag)
         logger.debug(f"GET {url}")
         r = self.session.get(url)  # pylint: disable=invalid-name
@@ -102,7 +102,7 @@ class HTTPClient:
         filtered_posts = [x for x in all_posts if x["rating"] != "s" and "trap" not in x["tags"]]
         return filtered_posts[math.floor(random.random() * len(filtered_posts))]["file_url"]
 
-    def get_lunar(self, tag: str) -> str:  # pylint: disable=missing-function-docstring
+    def get_lunar(self, tag: str) -> Union[None, str]:  # pylint: disable=missing-function-docstring
         url = self.base_urls["lunar"].format(tag)
         logger.debug(f"GET {url}")
         headers = {"Authorization": self.config.lunar_token}
@@ -115,7 +115,7 @@ class HTTPClient:
             return
         return data["url"]
 
-    def get_waifu_im(self, tag: str) -> str:  # pylint: disable=missing-function-docstring
+    def get_waifu_im(self, tag: str) -> Union[None, str]:  # pylint: disable=missing-function-docstring
         url = self.base_urls["waifu.im"].format(tag)
         logger.debug(f"GET {url}")
         r = self.session.get(url)  # pylint: disable=invalid-name
